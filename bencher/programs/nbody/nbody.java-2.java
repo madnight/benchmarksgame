@@ -41,17 +41,16 @@ final class NBodySystem {
    }
 
    public void advance(double dt) {
-
       for(int i=0; i < bodies.length; ++i) {
-            Body iBody = bodies[i];
+         Body iBody = bodies[i];
          for(int j=i+1; j < bodies.length; ++j) {
-                double dx = iBody.x - bodies[j].x;
+            double dx = iBody.x - bodies[j].x;
             double dy = iBody.y - bodies[j].y;
             double dz = iBody.z - bodies[j].z;
 
-                double dSquared = dx * dx + dy * dy + dz * dz;
-                double distance = Math.sqrt(dSquared);
-                double mag = dt / (dSquared * distance);
+            double dSquared = dx * dx + dy * dy + dz * dz;
+            double distance = Math.sqrt(dSquared);
+            double mag = dt / (dSquared * distance);
 
             iBody.vx -= dx * bodies[j].mass * mag;
             iBody.vy -= dy * bodies[j].mass * mag;
@@ -63,7 +62,7 @@ final class NBodySystem {
          }
       }
 
-        for ( Body body : bodies) {
+      for ( Body body : bodies) {
          body.x += dt * body.vx;
          body.y += dt * body.vy;
          body.z += dt * body.vz;
@@ -75,15 +74,15 @@ final class NBodySystem {
       double e = 0.0;
 
       for (int i=0; i < bodies.length; ++i) {
-            Body iBody = bodies[i];
-            e += 0.5 * iBody.mass *
-                 ( iBody.vx * iBody.vx
-                   + iBody.vy * iBody.vy
-                   + iBody.vz * iBody.vz );
+         Body iBody = bodies[i];
+         e += 0.5 * iBody.mass *
+            ( iBody.vx * iBody.vx
+                + iBody.vy * iBody.vy
+                + iBody.vz * iBody.vz );
 
          for (int j=i+1; j < bodies.length; ++j) {
-                Body jBody = bodies[j];
-                dx = iBody.x - jBody.x;
+            Body jBody = bodies[j];
+            dx = iBody.x - jBody.x;
             dy = iBody.y - jBody.y;
             dz = iBody.z - jBody.z;
 
